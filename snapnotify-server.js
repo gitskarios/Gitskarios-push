@@ -128,8 +128,7 @@ http.createServer(function (req, res) {
                         delayWhileIdle: true,
                         timeToLive: 3,
                         data: {
-                            key1: 'message1',
-                            key2: 'message2'
+                            key1: recstr
                         },
                         notification: {
                             title: "Hello, World",
