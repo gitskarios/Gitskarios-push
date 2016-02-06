@@ -115,10 +115,10 @@ http.createServer(function (req, res) {
                     recstr += chunk.toString();
                 });
 
-                var jsonObject = JSON.parse(recstr);
-    
                 req.on('end', function() {
-                    //empty ok
+
+                    var jsonObject = JSON.parse(recstr);
+
                     res.writeHead(200, "OK", {'Content-Type': 'text/html'});
                     res.end();
                     var sender = new gcm.Sender(settings.apikey);
