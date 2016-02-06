@@ -130,11 +130,7 @@ http.createServer(function (req, res) {
                         delayWhileIdle: true,
                         timeToLive: 3,
                         data: {
-                            action: jsonObject.action,
-                            ref: jsonObject.ref,
-                            before: jsonObject.before,
-                            after: jsonObject.after,
-                            commits: jsonObject.commits 
+                            content: jsonObject
                         }
                     });
 
