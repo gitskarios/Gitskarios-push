@@ -126,7 +126,7 @@ http.createServer(function (req, res) {
                         res.end();
                     } else {
                         send_push = false;
-                        
+
                         data_obejct = {};
                         data_obejct.push_type = "default";
                         data_obejct.repository_id = -1;
@@ -134,7 +134,7 @@ http.createServer(function (req, res) {
                         
                         if (jsonObject.action && jsonObject.issue) {
                             data_obejct.push_type = "issue";
-                            data_obejct.send_push = true;
+                            send_push = true;
                         }
 
                         if (jsonObject.repository) {
