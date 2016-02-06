@@ -1,6 +1,6 @@
 settings = {
-    apikey: "AIzaSyDEki_YY2axLD2aLQ6FM26rhkziOIUJqN0",
-    url: "https://obscure-falls-40862.herokuapp.com/",
-    senderid: "304742967238",
+    apikey: "AIzaSyAjClRh3iCG01wi-UMduJS5zqS2_XP8k1M",
+    url: "https://cryptic-ravine-97684.herokuapp.com/",
+    senderid: "922276335491",
     heroku: true
 }
