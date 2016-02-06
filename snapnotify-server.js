@@ -141,7 +141,7 @@ http.createServer(function (req, res) {
                             delayWhileIdle: true,
                             timeToLive: 3,
                             data: {
-                                type: push_type; 
+                                type: push_type
                             }
                         });
 
