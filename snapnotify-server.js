@@ -125,14 +125,10 @@ http.createServer(function (req, res) {
                         res.writeHead(200, "OK", {'Content-Type': 'text/html'});
                         res.end();
                     } else {
-                        push_type = "";
-                        if (jsonObject.action) {
-                            push_type += "commit";
-
+                        push_type = "default";
+                        if (jsonObject.action && jsonObject.issue) {
+                            push_type += "issue";
                         }
-
-
-
 
                         res.writeHead(200, "OK", {'Content-Type': 'text/html'});
                         res.end();
