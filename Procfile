@@ -1,1 +1,1 @@
-web: node snapnotify-server.js
+web: DEBUG node snapnotify-server.js
