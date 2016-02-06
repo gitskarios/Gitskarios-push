@@ -125,18 +125,20 @@ http.createServer(function (req, res) {
                         res.writeHead(200, "OK", {'Content-Type': 'text/html'});
                         res.end();
                     } else {
-                        push_type = "default";
-                        send_push = false;
-                        repository_id = -1;
-                        repository_name = "";
+                        data_obejct = {};
+                        data_obejct.push_type = "default";
+                        data_obejct.send_push = false;
+                        data_obejct.repository_id = -1;
+                        data_obejct.repository_name = "";
+                        
                         if (jsonObject.action && jsonObject.issue) {
-                            push_type = "issue";
-                            send_push = true;
+                            data_obejct.push_type = "issue";
+                            data_obejct.send_push = true;
                         }
 
                         if (jsonObject.repository) {
-                            repository_id = jsonObject.repository.id;
-                            repository_name = jsonObject.repository.full_name;
+                            data_obejct.repository_id = jsonObject.repository.id;
+                            data_obejct.repository_name = jsonObject.repository.full_name;
                         }
 
                         if (send_push) {
@@ -150,11 +152,7 @@ http.createServer(function (req, res) {
                                 contentAvailable: true,
                                 delayWhileIdle: true,
                                 timeToLive: 3,
-                                data: {
-                                    type: push_type,
-                                    repository_id: repository_id
-                                    repository_name: repository_name
-                                }
+                                data: data_obejct
                             });
 
                             console.log(message);
