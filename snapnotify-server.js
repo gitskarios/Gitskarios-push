@@ -127,19 +127,19 @@ http.createServer(function (req, res) {
                     } else {
                         send_push = false;
 
-                        data_obejct = {};
-                        data_obejct.push_type = "default";
-                        data_obejct.repository_id = -1;
-                        data_obejct.repository_name = "";
+                        data_object = {};
+                        data_object.push_type = null;
+                        data_object.repository_id = -1;
+                        data_object.repository_name = "";
                         
                         if (jsonObject.action && jsonObject.issue) {
-                            data_obejct.push_type = "issue";
+                            data_object.push_type = "issue";
                             send_push = true;
                         }
 
                         if (jsonObject.repository) {
-                            data_obejct.repository_id = jsonObject.repository.id;
-                            data_obejct.repository_name = jsonObject.repository.full_name;
+                            data_object.repository_id = jsonObject.repository.id;
+                            data_object.repository_name = jsonObject.repository.full_name;
                         }
 
                         if (send_push) {
@@ -153,7 +153,7 @@ http.createServer(function (req, res) {
                                 contentAvailable: true,
                                 delayWhileIdle: true,
                                 timeToLive: 3,
-                                data: data_obejct
+                                data: data_object
                             });
 
                             console.log(message);
