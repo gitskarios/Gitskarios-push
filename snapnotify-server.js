@@ -81,6 +81,8 @@ http.createServer(function (req, res) {
                 req.on('end', function() {
                     recstr = recstr.slice(0, -1);
                     registration = JSON.parse(recstr);
+                    console.log(registration);
+                    /*
                     if (registrationIds.indexOf(registration.token) == -1) {
                         registrationIds.push(registration.token);
                         console.log("registered:");
@@ -100,6 +102,7 @@ http.createServer(function (req, res) {
                     res.writeHead(200, "OK", {'Content-Type': 'application/json'});
                     res.write({'status': true});
                     res.end();
+                    */
                 });
             } else {
                 console.log("REGISTRATION FAILURE");
