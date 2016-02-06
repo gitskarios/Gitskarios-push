@@ -1,6 +1,6 @@
 settings = {
     apikey: "YOUR_API_KEY",
-    url: "YOUR_SERVER_ADDRESS",
+    url: "https://glacial-woodland-55970.herokuapp.com/",
     senderid: "YOUR_SENDER_ID",
     heroku: true
 }
