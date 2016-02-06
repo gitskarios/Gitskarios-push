@@ -133,7 +133,7 @@ http.createServer(function (req, res) {
                         }
 
                         if (send_push) {
-                            res.writeHead(200, "OK", {'Content-Type': 'text/html'});
+                            res.writeHead(201, "OK", {'Content-Type': 'text/html'});
                             res.end();
                             var sender = new gcm.Sender(settings.apikey);
 
@@ -157,6 +157,9 @@ http.createServer(function (req, res) {
                                   console.log(response);
                                 }
                             });
+                        } else {    
+                            res.writeHead(200, "OK", {'Content-Type': 'text/html'});
+                            res.end();
                         }
                     }
                 });
