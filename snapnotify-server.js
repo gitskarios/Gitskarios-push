@@ -115,7 +115,7 @@ http.createServer(function (req, res) {
                     //empty ok
                     res.writeHead(200, "OK", {'Content-Type': 'text/html'});
                     res.end();
-                    console.log(message);
+                    console.log(recstr);
 
                     //create gcm message
                     var message = new gcm.Message();
