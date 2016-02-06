@@ -125,9 +125,10 @@ http.createServer(function (req, res) {
                         res.writeHead(200, "OK", {'Content-Type': 'text/html'});
                         res.end();
                     } else {
+                        send_push = false;
+                        
                         data_obejct = {};
                         data_obejct.push_type = "default";
-                        data_obejct.send_push = false;
                         data_obejct.repository_id = -1;
                         data_obejct.repository_name = "";
                         
