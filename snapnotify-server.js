@@ -78,13 +78,12 @@ http.createServer(function (req, res) {
                     recstr += chunk.toString();
                 });
                 req.on('end', function() {
-                    console.log(recstr);
-                    console.log(JSON.parse(recstr).token);
-                    /*
-                    if (registrationIds.indexOf(registration.token) == -1) {
-                        registrationIds.push(registration.token);
+                    var newToken = JSON.parse(recstr).token
+                    
+                    if (registrationIds.indexOf(newToken) == -1) {
+                        registrationIds.push(newToken);
                         console.log("registered:");
-                        console.log(registration.token);
+                        console.log(newToken);
                     } else {
                         console.log("registration exists");
                     }
@@ -100,7 +99,6 @@ http.createServer(function (req, res) {
                     res.writeHead(200, "OK", {'Content-Type': 'application/json'});
                     res.write({'status': true});
                     res.end();
-                    */
                 });
             } else {
                 console.log("REGISTRATION FAILURE");
