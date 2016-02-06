@@ -80,10 +80,11 @@ http.createServer(function (req, res) {
                 req.on('end', function() {
                     var newToken = JSON.parse(recstr).token
                     
+                    console.log(newToken);
+                    
                     if (registrationIds.indexOf(newToken) == -1) {
                         registrationIds.push(newToken);
-                        console.log("registered:");
-                        console.log(newToken);
+                        console.log("registered");
                     } else {
                         console.log("registration exists");
                     }
