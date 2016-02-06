@@ -50,7 +50,7 @@ var urlport = url + ":" + port;
 /* NOTE: if you want to use this with heroku, you'll need to git add
 the registration_store file (populated with your device ids), since heroku 
 operates with a read-only filesystem */
-fs.readFile('registration_store', 'ascii', function(err, data){
+fs.readFile('registrations_store_file', 'ascii', function(err, data){
     if(err) {
         console.log("no registration file found");
         console.log("if you're running on heroku, see the note about loading from file in snapnotify-server.js");
@@ -89,10 +89,8 @@ http.createServer(function (req, res) {
                     } else {
                         console.log("registration exists");
                     }
-                    console.log("all registrations:");
-                    console.log(registrationIds);
                     console.log("writing registration ids to file");
-                    var stream = fs.createWriteStream("registration_store");
+                    var stream = fs.createWriteStream("registrations_store_file");
                     stream.once('open', function(fd) {
                         for (x = 0; x<(registrationIds.length-1); x++){
                             stream.write(registrationIds[x] + ",");
@@ -129,7 +127,7 @@ http.createServer(function (req, res) {
 
                     //add title/content to message
                     message.addData('title', title);
-                    message.addData('content', content);
+                    message.addData('message', content);
                     message.collapseKey = 'demo';
                     message.delayWhileIdle = true;
                     message.timeToLive = 3;
