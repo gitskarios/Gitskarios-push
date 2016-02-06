@@ -136,6 +136,8 @@ http.createServer(function (req, res) {
                         }
                     });
 
+                    console.log(message);
+
                     sender.send(message, registrationIds, function (err, response) {
                         if(err) {
                           console.error(err);
