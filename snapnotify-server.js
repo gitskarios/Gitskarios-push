@@ -128,7 +128,7 @@ http.createServer(function (req, res) {
                         push_type = "default";
                         send_push = false;
                         if (jsonObject.action && jsonObject.issue) {
-                            push_type += "issue";
+                            push_type = "issue";
                             send_push = true;
                         }
 
