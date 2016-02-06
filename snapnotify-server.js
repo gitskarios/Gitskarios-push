@@ -125,9 +125,9 @@ http.createServer(function (req, res) {
                         res.writeHead(200, "OK", {'Content-Type': 'text/html'});
                         res.end();
                     } else {
-                        type = "";
+                        push_type = "";
                         if (jsonObject.action) {
-                            type = "commit";
+                            push_type = "commit";
 
                         }
 
@@ -145,7 +145,7 @@ http.createServer(function (req, res) {
                             delayWhileIdle: true,
                             timeToLive: 3,
                             data: {
-                                type: type; 
+                                type: push_type; 
                             }
                         });
 
