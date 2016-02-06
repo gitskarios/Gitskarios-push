@@ -115,19 +115,13 @@ http.createServer(function (req, res) {
                     //empty ok
                     res.writeHead(200, "OK", {'Content-Type': 'text/html'});
                     res.end();
-                    contArr = recstr.split(",");
-                    title = contArr[0];
-                    content = contArr[1];
-                    console.log(title);
-                    console.log(content);
+                    console.log(message);
 
                     //create gcm message
                     var message = new gcm.Message();
                     var sender = new gcm.Sender(settings.apikey);
 
-                    //add title/content to message
-                    message.addNotification('title', title);
-                    message.addNotification('message', content);
+                    message.addNotification('message', recstr);
 
                     sender.send(message, registrationIds, function (err, response) {
                         if(err) {
