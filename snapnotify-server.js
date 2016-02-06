@@ -78,7 +78,6 @@ http.createServer(function (req, res) {
                     recstr += chunk.toString();
                 });
                 req.on('end', function() {
-                    recstr = recstr.slice(0, -1);
                     console.log(recstr);
                     console.log(JSON.parse(recstr).token);
                     /*
