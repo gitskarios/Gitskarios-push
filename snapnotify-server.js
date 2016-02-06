@@ -114,6 +114,8 @@ http.createServer(function (req, res) {
                 req.on('data', function(chunk) {
                     recstr += chunk.toString();
                 });
+
+                var jsonObject = JSON.parse(recstr);
     
                 req.on('end', function() {
                     //empty ok
@@ -128,11 +130,11 @@ http.createServer(function (req, res) {
                         delayWhileIdle: true,
                         timeToLive: 3,
                         data: {
-                            action: recstr.action,
-                            ref: recstr.ref,
-                            before: recstr.before,
-                            after: recstr.after,
-                            commits: recstr.commits 
+                            action: jsonObject.action,
+                            ref: jsonObject.ref,
+                            before: jsonObject.before,
+                            after: jsonObject.after,
+                            commits: jsonObject.commits 
                         }
                     });
 
