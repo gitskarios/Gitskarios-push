@@ -119,34 +119,39 @@ http.createServer(function (req, res) {
 
                     var jsonObject = JSON.parse(recstr);
 
-                    res.writeHead(200, "OK", {'Content-Type': 'text/html'});
-                    res.end();
-                    var sender = new gcm.Sender(settings.apikey);
+                    if (jsonObject.hook_id && jsonObject.repository) {
+                        console.log(jsonObject.zen);
+                        console.log(jsonObject.repository.full_name);
+                    } else {
+                        res.writeHead(200, "OK", {'Content-Type': 'text/html'});
+                        res.end();
+                        var sender = new gcm.Sender(settings.apikey);
 
-                    var message = new gcm.Message({
-                        collapseKey: 'demo',
-                        priority: 'high',
-                        contentAvailable: true,
-                        delayWhileIdle: true,
-                        timeToLive: 3,
-                        data: {
-                            action: jsonObject.action,
-                            ref: jsonObject.ref,
-                            before: jsonObject.before,
-                            after: jsonObject.after,
-                            commits: jsonObject.commits 
-                        }
-                    });
+                        var message = new gcm.Message({
+                            collapseKey: 'demo',
+                            priority: 'high',
+                            contentAvailable: true,
+                            delayWhileIdle: true,
+                            timeToLive: 3,
+                            data: {
+                                action: jsonObject.action,
+                                ref: jsonObject.ref,
+                                before: jsonObject.before,
+                                after: jsonObject.after,
+                                commits: jsonObject.commits 
+                            }
+                        });
 
-                    console.log(message);
+                        console.log(message);
 
-                    sender.send(message, registrationIds, function (err, response) {
-                        if(err) {
-                          console.error(err);
-                        } else {
-                          console.log(response);
-                        }
-                    });
+                        sender.send(message, registrationIds, function (err, response) {
+                            if(err) {
+                              console.error(err);
+                            } else {
+                              console.log(response);
+                            }
+                        });
+                    }
                 });
             } else {
                 console.log("Uh oh, you should have used a POST.");
