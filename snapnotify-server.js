@@ -133,11 +133,6 @@ http.createServer(function (req, res) {
                             before: recstr.before,
                             after: recstr.after,
                             commits: recstr.commits 
-                        },
-                        notification: {
-                            title: "Hello, World",
-                            icon: "ic_launcher",
-                            body: "This is a notification that will be displayed ASAP."
                         }
                     });
 
