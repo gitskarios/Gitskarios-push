@@ -79,8 +79,6 @@ http.createServer(function (req, res) {
                     recstr += chunk.toString();
                 });
                 req.on('end', function() {
-                    res.writeHead(200, "OK", {'Content-Type': 'text/html'});
-                    res.end();
                     recstr = recstr.slice(0, -1);
                     if (registrationIds.indexOf(recstr) == -1) {
                         registrationIds.push(recstr);
@@ -98,9 +96,14 @@ http.createServer(function (req, res) {
                         stream.write(registrationIds[registrationIds.length-1]);
                     });
                     console.log("writing complete");
+                    res.writeHead(200, "OK", {'Content-Type': 'application/json'});
+                    res.write({'status': true});
+                    res.end();
                 });
             } else {
                 console.log("REGISTRATION FAILURE");
+                    res.writeHead(400, "KO", {'Content-Type': 'text/html'});
+                    res.end();
             }
             break;
         case '/message':
