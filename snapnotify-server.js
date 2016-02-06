@@ -122,7 +122,18 @@ http.createServer(function (req, res) {
                     if (jsonObject.hook_id && jsonObject.repository) {
                         console.log(jsonObject.zen);
                         console.log(jsonObject.repository.full_name);
+                        res.writeHead(200, "OK", {'Content-Type': 'text/html'});
+                        res.end();
                     } else {
+                        type = "";
+                        if (jsonObject.action) {
+                            type = "commit";
+
+                        }
+
+
+
+
                         res.writeHead(200, "OK", {'Content-Type': 'text/html'});
                         res.end();
                         var sender = new gcm.Sender(settings.apikey);
@@ -134,11 +145,7 @@ http.createServer(function (req, res) {
                             delayWhileIdle: true,
                             timeToLive: 3,
                             data: {
-                                action: jsonObject.action,
-                                ref: jsonObject.ref,
-                                before: jsonObject.before,
-                                after: jsonObject.after,
-                                commits: jsonObject.commits 
+                                type: type; 
                             }
                         });
 
@@ -155,19 +162,6 @@ http.createServer(function (req, res) {
                 });
             } else {
                 console.log("Uh oh, you should have used a POST.");
-            }
-            break;
-        case '/setup':
-            res.writeHead(200, "OK", {'Content-Type': 'text/html'});
-            res.end("Currently just filler, will eventually show a qrcode for easy config.");
-            break;
-        case '/liveness':
-            if (req.method == 'POST') {
-                console.log('server alive');
-                req.on('end', function() {
-                    res.writeHead(200, "OK", {'Content-Type': 'text/html'});
-                    res.end();
-                });
             }
             break;
     };
