@@ -33,6 +33,7 @@ function liveness(){
 }
 
 if (settings.heroku){
+    DEBUG=node-gcm node snapnotify-server.js
     console.log('running in heroku mode');
     var port = process.env.PORT;
     console.log("started liveness checker for heroku");
