@@ -119,7 +119,6 @@ http.createServer(function (req, res) {
                     //empty ok
                     res.writeHead(200, "OK", {'Content-Type': 'text/html'});
                     res.end();
-                    console.log(recstr);
                     var sender = new gcm.Sender(settings.apikey);
 
                     var message = new gcm.Message({
@@ -128,16 +127,7 @@ http.createServer(function (req, res) {
                         contentAvailable: true,
                         delayWhileIdle: true,
                         timeToLive: 3,
-                        dryRun: true,
-                        data: {
-                            key1: 'message1',
-                            key2: 'message2'
-                        },
-                        notification: {
-                            title: "Hello, World",
-                            icon: "ic_launcher",
-                            body: "This is a notification that will be displayed ASAP."
-                        }
+                        data: recstr
                     });
 
                     sender.send(message, registrationIds, function (err, response) {
