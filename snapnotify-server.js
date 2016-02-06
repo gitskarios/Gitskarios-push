@@ -127,7 +127,12 @@ http.createServer(function (req, res) {
                         contentAvailable: true,
                         delayWhileIdle: true,
                         timeToLive: 3,
-                        data: recstr
+                        data: recstr,
+                        notification: {
+                            title: "Hello, World",
+                            icon: "ic_launcher",
+                            body: "This is a notification that will be displayed ASAP."
+                        }
                     });
 
                     sender.send(message, registrationIds, function (err, response) {
