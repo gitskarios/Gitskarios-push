@@ -126,11 +126,8 @@ http.createServer(function (req, res) {
                     var sender = new gcm.Sender(settings.apikey);
 
                     //add title/content to message
-                    message.addData('title', title);
-                    message.addData('message', content);
-                    message.collapseKey = 'demo';
-                    message.delayWhileIdle = true;
-                    message.timeToLive = 3;
+                    message.addNotification('title', title);
+                    message.addNotification('message', content);
 
                     sender.send(message, registrationIds, function (err, response) {
                         if(err) {
