@@ -128,6 +128,7 @@ http.createServer(function (req, res) {
                     //add title/content to message
                     message.addData('title', title);
                     message.addData('message', content);
+                    message.addData('message', 1);
                     message.collapseKey = 'demo';
                     message.delayWhileIdle = true;
                     message.timeToLive = 3;
