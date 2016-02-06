@@ -97,7 +97,7 @@ http.createServer(function (req, res) {
                     });
                     console.log("writing complete");
                     res.writeHead(200, "OK", {'Content-Type': 'application/json'});
-                    res.write({'status': true});
+                    res.write(JSON.stringify({'status': true}));
                     res.end();
                 });
             } else {
