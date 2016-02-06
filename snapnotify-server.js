@@ -73,13 +73,13 @@ http.createServer(function (req, res) {
             break;
         case '/register':
             if (req.method == 'POST'){
-                console.log('posted');
                 recstr = "";
                 req.on('data', function(chunk) {
                     recstr += chunk.toString();
                 });
                 req.on('end', function() {
                     recstr = recstr.slice(0, -1);
+                    console.log(recstr);
                     registration = JSON.parse(recstr);
                     console.log(registration);
                     /*
