@@ -132,9 +132,12 @@ http.createServer(function (req, res) {
                     message.delayWhileIdle = true;
                     message.timeToLive = 3;
 
-                    //send the message
-                    sender.send(message, registrationIds, 4, function (result) {
-                        console.log(result);
+                    sender.send(message, registrationIds, function (err, response) {
+                        if(err) {
+                          console.error(err);
+                        } else {
+                          console.log(response);
+                        }
                     });
                 });
             } else {
