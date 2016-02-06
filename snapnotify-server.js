@@ -126,34 +126,38 @@ http.createServer(function (req, res) {
                         res.end();
                     } else {
                         push_type = "default";
+                        send_push = false;
                         if (jsonObject.action && jsonObject.issue) {
                             push_type += "issue";
+                            send_push = true;
                         }
 
-                        res.writeHead(200, "OK", {'Content-Type': 'text/html'});
-                        res.end();
-                        var sender = new gcm.Sender(settings.apikey);
+                        if (send_push) {
+                            res.writeHead(200, "OK", {'Content-Type': 'text/html'});
+                            res.end();
+                            var sender = new gcm.Sender(settings.apikey);
 
-                        var message = new gcm.Message({
-                            collapseKey: 'demo',
-                            priority: 'high',
-                            contentAvailable: true,
-                            delayWhileIdle: true,
-                            timeToLive: 3,
-                            data: {
-                                type: push_type
-                            }
-                        });
+                            var message = new gcm.Message({
+                                collapseKey: 'demo',
+                                priority: 'high',
+                                contentAvailable: true,
+                                delayWhileIdle: true,
+                                timeToLive: 3,
+                                data: {
+                                    type: push_type
+                                }
+                            });
 
-                        console.log(message);
+                            console.log(message);
 
-                        sender.send(message, registrationIds, function (err, response) {
-                            if(err) {
-                              console.error(err);
-                            } else {
-                              console.log(response);
-                            }
-                        });
+                            sender.send(message, registrationIds, function (err, response) {
+                                if(err) {
+                                  console.error(err);
+                                } else {
+                                  console.log(response);
+                                }
+                            });
+                        }
                     }
                 });
             } else {
