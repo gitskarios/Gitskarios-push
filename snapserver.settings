@@ -1,6 +1,6 @@
 settings = {
     apikey: "AIzaSyDEki_YY2axLD2aLQ6FM26rhkziOIUJqN0",
-    url: "https://stormy-depths-62001.herokuapp.com/",
+    url: "https://obscure-falls-40862.herokuapp.com/",
     senderid: "304742967238",
     heroku: true
 }
