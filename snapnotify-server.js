@@ -127,9 +127,16 @@ http.createServer(function (req, res) {
                     } else {
                         push_type = "default";
                         send_push = false;
+                        repository_id = -1;
+                        repository_name = "";
                         if (jsonObject.action && jsonObject.issue) {
                             push_type = "issue";
                             send_push = true;
+                        }
+
+                        if (jsonObject.repository) {
+                            repository_id = jsonObject.repository.id;
+                            repository_name = jsonObject.repository.full_name;
                         }
 
                         if (send_push) {
@@ -144,7 +151,9 @@ http.createServer(function (req, res) {
                                 delayWhileIdle: true,
                                 timeToLive: 3,
                                 data: {
-                                    type: push_type
+                                    type: push_type,
+                                    repository_id: repository_id
+                                    repository_name: repository_name
                                 }
                             });
 
