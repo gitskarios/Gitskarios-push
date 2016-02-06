@@ -80,7 +80,7 @@ http.createServer(function (req, res) {
                 req.on('end', function() {
                     recstr = recstr.slice(0, -1);
                     console.log(recstr);
-                    var jsonContent = JSON.parse(contents);
+                    var jsonContent = JSON.parse(recstr);
                     console.log(jsonContent);
                     /*
                     if (registrationIds.indexOf(registration.token) == -1) {
