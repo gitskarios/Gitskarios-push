@@ -128,7 +128,11 @@ http.createServer(function (req, res) {
                         delayWhileIdle: true,
                         timeToLive: 3,
                         data: {
-                            key1: recstr.action
+                            action: recstr.action,
+                            ref: recstr.ref,
+                            before: recstr.before,
+                            after: recstr.after,
+                            commits: recstr.commits 
                         },
                         notification: {
                             title: "Hello, World",
